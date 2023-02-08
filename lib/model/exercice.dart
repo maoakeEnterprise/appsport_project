@@ -2,7 +2,7 @@ class Exercice{
   String? _nom;
   String ? _muscle;
 
-  Exercice(nom,muscle);
+  Exercice(this._nom,this._muscle);
 
   String? get getMuscle => _muscle;
   String? get getNom => _nom;

@@ -4,9 +4,11 @@ import '../../themes/themes.dart';
 
 // ignore: must_be_immutable
 class CaseWidgetExercice extends StatelessWidget {
-  AssetImage? image;
   int? cas;
-  CaseWidgetExercice({Key? key,this.image,this.cas}) : super(key: key);
+  String? nomExercice;
+  String? muscle;
+  CaseWidgetExercice({Key? key,this.nomExercice,this.muscle,this.cas}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +52,7 @@ class CaseWidgetExercice extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Nom Exercice",style: CustomThemes.widgetName,),
+                Text(nomExercice!,style: CustomThemes.widgetName,),
                 InkWell(
                   borderRadius: BorderRadius.circular(15),
                   child: Container(
@@ -71,9 +73,8 @@ class CaseWidgetExercice extends StatelessWidget {
                 )
               ],
             ),
-            Expanded(
-              child: Image(image: image!)
-            )
+            const Expanded(child: SizedBox()),
+            Image(image: AssetImage("assets/images/$muscle.png"),width: 75,height: 75,)
           ],
         ),
       );
