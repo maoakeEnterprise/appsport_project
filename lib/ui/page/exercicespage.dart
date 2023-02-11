@@ -1,4 +1,5 @@
 import 'package:appsport_project/bloc/exercicebloc/exercice_bloc.dart';
+import 'package:appsport_project/firebase/exercicefirebase.dart';
 import 'package:appsport_project/model/exercice.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,8 +20,6 @@ class ExercicesPage extends StatelessWidget {
     Exercice("Machine Abdos 1", "abdos"),
     Exercice("null", "null")
   ];
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -44,23 +43,15 @@ class ExercicesPage extends StatelessWidget {
             child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                InkWell(child: RowButtonSectionWidget(text: "Haut du corps",),
-                onTap: (){
-                  context.read<ExerciceBloc>().add(HautDuCorpsEvent());
-                },),
-                InkWell(child: RowButtonSectionWidget(text: "Bras",),
-                onTap: (){
-                  context.read<ExerciceBloc>().add(BrasEvent());
-                },),
-                InkWell(child: RowButtonSectionWidget(text: "Bas du Corps",),
-                onTap: (){
-                  context.read<ExerciceBloc>().add(BasDuCorpsEvent());
-                },),
+                RowButtonSectionWidget(text: "Haut du corps",cas: 0,),
+                RowButtonSectionWidget(text: "Bras",cas: 1,),
+                RowButtonSectionWidget(text: "Bas du Corps",cas: 2,),
               ],
         ),
       ),
           const SizedBox(height: 10,),
-          Expanded(
+          ExerciceFirebase()
+          /*Expanded(
             child: ListView.builder(
               itemCount: exerciceList.length,
                 itemBuilder: (context,index){
@@ -73,7 +64,7 @@ class ExercicesPage extends StatelessWidget {
 
                 }
             )
-          )
+          )*/
         ],
       )
     );
