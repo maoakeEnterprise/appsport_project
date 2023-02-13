@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RowButtonSectionWidget extends StatelessWidget {
-  int? cas;
   String? text;
+  int? cas;
 
   RowButtonSectionWidget({Key? key, this.text,this.cas}) : super(key: key);
 
@@ -25,12 +25,13 @@ class RowButtonSectionWidget extends StatelessWidget {
         if(cas==0){
           context.read<ExerciceBloc>().add(HautDuCorpsEvent());
         }
-        else if(cas==1){
+        else if(cas == 1){
           context.read<ExerciceBloc>().add(BrasEvent());
         }
         else{
           context.read<ExerciceBloc>().add(BasDuCorpsEvent());
         }
+
       },
     );
   }
