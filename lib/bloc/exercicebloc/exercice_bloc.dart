@@ -1,15 +1,14 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 part 'exercice_event.dart';
 part 'exercice_state.dart';
 
 class ExerciceBloc extends Bloc<ExerciceEvent, ExerciceState> {
   ExerciceBloc() : super(ExerciceInitial()) {
+    on<SearchExoEvent>((event, emit) {
+
+    });
     on<HautDuCorpsEvent>((event, emit) {
       // TODO: implement event handler
       emit(ExerciceLoadingState(type: "haut"));

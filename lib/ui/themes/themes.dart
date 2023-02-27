@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class CustomThemes{
 
   static TextStyle headerAppBarTextStyle = const TextStyle(fontSize: 50, color: Colors.black);
-  static TextStyle secondTypeTitle = const TextStyle(fontSize: 25, color: Colors.black, fontWeight: FontWeight.bold);
+  static TextStyle secondTypeTitle = const TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold);
 
   static TextStyle widgetName = const TextStyle(fontSize: 30, color: Colors.black, fontWeight: FontWeight.bold);
   static TextStyle descriptifTitle = const TextStyle(fontSize: 20, color: Colors.grey, fontWeight: FontWeight.bold);

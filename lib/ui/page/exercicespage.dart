@@ -1,9 +1,5 @@
-import 'package:appsport_project/bloc/exercicebloc/exercice_bloc.dart';
 import 'package:appsport_project/firebase/exercicefirebase.dart';
-import 'package:appsport_project/model/exercice.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '../widgets/exercicewidget/casewidgetexercice.dart';
 import '../widgets/exercicewidget/rowboutonsection.dart';
 import '../widgets/exercicewidget/searchsection.dart';
 
@@ -41,7 +37,13 @@ class ExercicesPage extends StatelessWidget {
             const SizedBox(height: 10,),
             ExerciceFirebase(),
           ],
-        )
+        ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+
+        },
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }

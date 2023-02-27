@@ -52,7 +52,7 @@ class CaseWidgetStartProg extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Image(image: AssetImage("assets/images/muscle.png"),width: 100,height: 100,),
+              const Image(image: AssetImage("assets/images/biceps.png"),width: 100,height: 100,),
               InkWell(
                 borderRadius: BorderRadius.circular(15),
                 child: Container(

@@ -1,19 +1,16 @@
 import 'package:appsport_project/bloc/exercicebloc/exercice_bloc.dart';
-import 'package:appsport_project/firebase/queryService.dart';
+import 'package:appsport_project/model/muscle.dart';
+import 'package:appsport_project/ui/widgets/exercicewidget/casewidgetexercice.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+// ignore: must_be_immutable
 class ExerciceFirebase extends StatelessWidget {
   ExerciceFirebase({Key? key}) : super(key: key);
   FirebaseFirestore db = FirebaseFirestore.instance;
-  final Stream<QuerySnapshot> informationExercice = FirebaseFirestore.instance.collection('Exercices').snapshots();
+  Stream<QuerySnapshot> informationExercice = FirebaseFirestore.instance.collection('Exercices').snapshots();
   bool flag = false;
-  var listExo = [];
-  var stateActual;
-
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +18,7 @@ class ExerciceFirebase extends StatelessWidget {
       child: BlocBuilder<ExerciceBloc, ExerciceState>(
         builder: (context, state) {
           if (state is ExerciceSuccessState) {
+            informationExercice = FirebaseFirestore.instance.collection('Exercices').where('type',isEqualTo: state.type).snapshots();
             return StreamBuilder(
                 stream: informationExercice,
                 builder: (BuildContext context,
@@ -37,33 +35,8 @@ class ExerciceFirebase extends StatelessWidget {
                     snapshot.data!.docs.map((DocumentSnapshot document) {
                       Map<String, dynamic> data =
                       document.data()! as Map<String, dynamic>;
-                      if(state.type != stateActual) {
-                        print("test");
-                        listExo = [];
-                        QueryService().getQueryMuscle("${state.type}").then(
-                          (QuerySnapshot docs){
-                            if(docs.docs.isNotEmpty){
-                              //listExo = [];
-                              for(int i=0;i < docs.size ; i++){
-                                if(data['idmuscle'] == docs.docs[i].get('id')){
-                                  flag = true;
-                                  listExo.add(data['idmuscle']);
-                                  print(data['nom']);
-                                }
-                              }
-                            }
-                            stateActual = state.type;
-                          }
-                      );
-                      }
-                      if(listExo != null){
-                        return ListTile(
-                          title: Text("${listExo.length}"),
-                        );
-                      }
-                      else{
-                        return const ListTile();
-                      }
+                      return CaseWidgetExercice(nom: data['nom'],nomMuscle: data['nomMuscle'],);
+
                     }).toList(),
                   );
                 });
@@ -85,9 +58,7 @@ class ExerciceFirebase extends StatelessWidget {
                     snapshot.data!.docs.map((DocumentSnapshot document) {
                       Map<String, dynamic> data =
                       document.data()! as Map<String, dynamic>;
-                      return ListTile(
-                        title: Text(data['nom']),
-                      );
+                      return CaseWidgetExercice(nom: data['nom'],nomMuscle: data['nomMuscle'],);
                     }).toList(),
                   );
                 });
@@ -95,5 +66,21 @@ class ExerciceFirebase extends StatelessWidget {
         },
       ),
     );
+  }
+
+  Future<bool> muscleRecup(String idmuscle,String state) async{
+    final ref = db.collection('Muscles').doc(idmuscle).withConverter(
+      fromFirestore: Muscle.fromFirestore,
+      toFirestore: (Muscle muscle, _) => muscle.toFirestore(),
+    );
+    final docSnap = await ref.get();
+    final muscle = docSnap.data();
+
+    flag = false;
+    if(muscle == null) return false;
+    if(muscle.type == state) flag = true;
+
+    return false;
+
   }
 }

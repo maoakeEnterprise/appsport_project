@@ -1,33 +1,31 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Exercice {
-  final String? id;
-  final String? idmuscle;
-  final String? nom;
+class Muscle{
+  String? id;
+  String? nom;
+  String? type;
 
-  Exercice({
-    this.id,
-    this.idmuscle,
-    this.nom,
-  });
+  Muscle({this.id,this.nom,this.type});
 
-  factory Exercice.fromFirestore(
+  factory Muscle.fromFirestore(
       DocumentSnapshot<Map<String, dynamic>> snapshot,
       SnapshotOptions? options,
-      ) {
+      ){
     final data = snapshot.data();
-    return Exercice(
+    return Muscle(
       id: data?['id'],
-      idmuscle: data?['idmuscle'],
       nom: data?['nom'],
+      type: data?['type'],
     );
   }
-
   Map<String, dynamic> toFirestore() {
     return {
       if (id != null) "name": id,
-      if (idmuscle != null) "state": idmuscle,
+      if (type != null) "state": type,
       if (nom != null) "country": nom,
     };
   }
+
+
+
 }

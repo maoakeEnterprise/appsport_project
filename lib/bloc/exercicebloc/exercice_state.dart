@@ -3,20 +3,21 @@ part of 'exercice_bloc.dart';
 @immutable
 abstract class ExerciceState {
   String? type;
-  ExerciceState({this.type});
+  String? valSearching;
+  ExerciceState({this.type,this.valSearching});
 }
 
 class ExerciceInitial extends ExerciceState {
-  ExerciceInitial({type}):super(type: type);
+  ExerciceInitial({type,valSearching}):super(type: type,valSearching: valSearching);
 }
 
 class ExerciceLoadingState extends ExerciceState{
-  ExerciceLoadingState({type}):super(type: type);
+  ExerciceLoadingState({type,valSearching}):super(type: type,valSearching: valSearching);
 }
 
 class ExerciceSuccessState extends ExerciceState{
-  ExerciceSuccessState({type}):super(type: type);
+  ExerciceSuccessState({type,valSearching}):super(type: type,valSearching: valSearching);
 }
 class ExerciceErrorState extends ExerciceState{
-  ExerciceErrorState({type}):super(type: type);
+  ExerciceErrorState({type,valSearching}):super(type: type,valSearching: valSearching);
 }

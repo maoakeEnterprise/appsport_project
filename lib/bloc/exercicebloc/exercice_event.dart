@@ -5,3 +5,4 @@ abstract class ExerciceEvent {}
 class HautDuCorpsEvent extends ExerciceEvent{}
 class BrasEvent extends ExerciceEvent{}
 class BasDuCorpsEvent extends ExerciceEvent{}
+class SearchExoEvent extends ExerciceEvent{}

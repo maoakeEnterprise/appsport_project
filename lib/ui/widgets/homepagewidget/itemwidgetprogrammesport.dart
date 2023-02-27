@@ -28,7 +28,7 @@ class ItemWidgetTrainings extends StatelessWidget {
                   width: 200,
                     child: Text("NOM DU PROGRAMME",style: CustomThemes.widgetName,)),
                 const SizedBox(width: 23,),
-                const Image(image: AssetImage("assets/images/muscle.png"), width: 100,height: 100,)
+                const Image(image: AssetImage("assets/images/biceps.png"), width: 100,height: 100,)
 
               ],
             ),

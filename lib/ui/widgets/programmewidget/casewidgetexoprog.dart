@@ -52,7 +52,7 @@ class CaseWidgetExoProg extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Image(image: AssetImage("assets/images/muscle.png"),width: 100,height: 100,),
+              const Image(image: AssetImage("assets/images/biceps.png"),width: 100,height: 100,),
               InkWell(
                 borderRadius: BorderRadius.circular(15),
                 child: Container(
@@ -64,7 +64,7 @@ class CaseWidgetExoProg extends StatelessWidget {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(15)
                   ),
-                  child: Image(image: AssetImage("assets/images/stylo.png"),),
+                  child: const Image(image: AssetImage("assets/images/stylo.png"),),
                 ),
                 onTap: (){
                   Navigator.pushNamed(context, "exoprogramme");

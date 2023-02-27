@@ -22,7 +22,7 @@ class GridViewExercice extends StatelessWidget {
         children: [
           WidgetExercice(image: AssetImage("assets/images/pectoraux.png"),),
           WidgetExercice(image: AssetImage("assets/images/dos.png"),),
-          WidgetExercice(image: AssetImage("assets/images/muscle.png"),),
+          WidgetExercice(image: AssetImage("assets/images/biceps.png"),),
           WidgetExercice(image: AssetImage("assets/images/jambe.png"),),
           WidgetExercice(image: AssetImage("assets/images/triceps.png"),),
           WidgetExercice(image: AssetImage("assets/images/abdos.png"),),
