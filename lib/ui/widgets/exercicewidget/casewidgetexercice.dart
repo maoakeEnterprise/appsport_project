@@ -27,7 +27,10 @@ class CaseWidgetExercice extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(nom!,style: CustomThemes.secondTypeTitle,),
+                SizedBox(
+                    width: 200,
+                    child: Text(nom!,style: CustomThemes.secondTypeTitle,),
+                ),
                 const SizedBox(height: 20,),
                 InkWell(
                   borderRadius: BorderRadius.circular(15),

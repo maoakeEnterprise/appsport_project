@@ -7,7 +7,8 @@ part 'exercice_state.dart';
 class ExerciceBloc extends Bloc<ExerciceEvent, ExerciceState> {
   ExerciceBloc() : super(ExerciceInitial()) {
     on<SearchExoEvent>((event, emit) {
-
+      emit((ExerciceLoadingState(valSearching: event.val)));
+      emit((ExerciceSuccessState(valSearching: event.val)));
     });
     on<HautDuCorpsEvent>((event, emit) {
       // TODO: implement event handler

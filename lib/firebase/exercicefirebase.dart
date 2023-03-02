@@ -35,7 +35,17 @@ class ExerciceFirebase extends StatelessWidget {
                     snapshot.data!.docs.map((DocumentSnapshot document) {
                       Map<String, dynamic> data =
                       document.data()! as Map<String, dynamic>;
-                      return CaseWidgetExercice(nom: data['nom'],nomMuscle: data['nomMuscle'],);
+                      print(state.valSearching);
+                      if(state.type != null){
+                        print(state.type);
+                        return CaseWidgetExercice(nom: data['nom'],nomMuscle: data['nomMuscle'],);
+                      }
+                      else if(state.valSearching != null && data['nom'].toString().toLowerCase().startsWith(state.valSearching!.toLowerCase())){
+                        return CaseWidgetExercice(nom: data['nom'],nomMuscle: data['nomMuscle'],);
+                      }
+                      else{
+                        return Container();
+                      }
 
                     }).toList(),
                   );

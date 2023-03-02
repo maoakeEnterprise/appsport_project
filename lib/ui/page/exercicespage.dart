@@ -21,7 +21,7 @@ class ExercicesPage extends StatelessWidget {
         backgroundColor: Colors.white,
         body: Column(
           children: [
-            const SearchSectionWidget(),
+            SearchSectionWidget(),
             Container(
               margin: const EdgeInsets.only(top: 10, left: 30, right: 30),
               //color: Colors.redAccent,

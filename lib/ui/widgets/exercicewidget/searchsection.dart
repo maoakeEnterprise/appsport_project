@@ -1,9 +1,12 @@
 // ignore: file_names
+import 'package:appsport_project/bloc/exercicebloc/exercice_bloc.dart';
 import 'package:appsport_project/ui/themes/themes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchSectionWidget extends StatelessWidget {
-  const SearchSectionWidget({Key? key}) : super(key: key);
+  SearchSectionWidget({Key? key}) : super(key: key);
+  String name = "";
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +24,13 @@ class SearchSectionWidget extends StatelessWidget {
             cursorColor: Colors.black,
             cursorRadius: const Radius.circular(10),
             decoration: CustomThemes.textFieldStyle,
+            onChanged: (val){name=val;},
           )),
           InkWell(
             borderRadius: BorderRadius.circular(15),
-            onTap: (){},
+            onTap: (){
+              context.read<ExerciceBloc>().add(SearchExoEvent(name));
+            },
             child: Container(
               padding: const EdgeInsets.all(20),
               child: const Image(

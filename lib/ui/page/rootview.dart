@@ -1,3 +1,4 @@
+import 'package:appsport_project/ui/page/authentificationpage.dart';
 import 'package:appsport_project/ui/page/exercicespage.dart';
 import 'package:appsport_project/ui/page/graphpage.dart';
 import 'package:appsport_project/ui/page/homepage.dart';
@@ -19,7 +20,7 @@ class RootView extends StatelessWidget {
       title: 'AppSport',
       theme: CustomThemes.themeData,
       routes: {
-        "/" :  (context)=>const HomePage(),
+        "/" :  (context)=>const AuthentificationPage(),
         "settings": (context)=>const SettingsPage(),
         "graph": (context)=> const GraphPage(),
         "exercice": (context)=> ExercicesPage(),
