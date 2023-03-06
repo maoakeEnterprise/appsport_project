@@ -23,7 +23,7 @@ class ExercicesPage extends StatelessWidget {
           children: [
             SearchSectionWidget(),
             Container(
-              margin: const EdgeInsets.only(top: 10, left: 30, right: 30),
+              margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
               //color: Colors.redAccent,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -40,7 +40,8 @@ class ExercicesPage extends StatelessWidget {
         ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-
+          String routeNameNewExercice = 'nouveauexercice';
+          Navigator.pushNamed(context, routeNameNewExercice);
         },
         child: const Icon(Icons.add),
       ),

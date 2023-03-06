@@ -1,3 +1,4 @@
+import 'package:appsport_project/bloc/createexercicebloc/createexercice_bloc.dart';
 import 'package:appsport_project/bloc/exercicebloc/exercice_bloc.dart';
 import 'package:appsport_project/ui/page/rootview.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
         providers: [
           BlocProvider(create: (context)=>ExerciceBloc()),
+          BlocProvider(create: (context)=>CreateExerciceBloc()),
         ],
     child: const RootView());
   }

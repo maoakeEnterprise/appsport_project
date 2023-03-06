@@ -19,18 +19,19 @@ class ItemWidgetTrainings extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const SizedBox(height: 30,),
-            Row(
+            const SizedBox(height: 20,),
+            Container(
+              padding: const EdgeInsets.all(20),
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 200,
+                      child: Text("NOM DU PROGRAMME",style: CustomThemes.widgetName,)),
+                  const Expanded(child: SizedBox()),
+                  const Image(image: AssetImage("assets/images/biceps.png"), width: 80,height: 80,)
 
-              children: [
-                const SizedBox(width: 20,),
-                SizedBox(
-                  width: 200,
-                    child: Text("NOM DU PROGRAMME",style: CustomThemes.widgetName,)),
-                const SizedBox(width: 23,),
-                const Image(image: AssetImage("assets/images/biceps.png"), width: 100,height: 100,)
-
-              ],
+                ],
+              ),
             ),
             const SizedBox(height: 30,),
             Container(

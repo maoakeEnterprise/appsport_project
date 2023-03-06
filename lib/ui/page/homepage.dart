@@ -1,11 +1,13 @@
 import 'package:appsport_project/ui/themes/themes.dart';
 import 'package:appsport_project/ui/widgets/homepagewidget/headermenuelementwidget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/homepagewidget/itemwidgetprogrammesport.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
+  final user = FirebaseAuth.instance.currentUser!;
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +41,8 @@ class HomePage extends StatelessWidget {
           Container(
             width: double.infinity,
             height: 50,
-            child: Text("Programme de sport", style: CustomThemes.secondTypeTitle,),
             padding: const EdgeInsets.all(10),
+            child: Text('Programme ', style: CustomThemes.secondTypeTitle,),
           ),
           Expanded(child: ListView(
             shrinkWrap: true,

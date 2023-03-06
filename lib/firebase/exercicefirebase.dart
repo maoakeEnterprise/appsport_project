@@ -1,6 +1,7 @@
 import 'package:appsport_project/bloc/exercicebloc/exercice_bloc.dart';
 import 'package:appsport_project/model/muscle.dart';
 import 'package:appsport_project/ui/widgets/exercicewidget/casewidgetexercice.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,6 +12,7 @@ class ExerciceFirebase extends StatelessWidget {
   FirebaseFirestore db = FirebaseFirestore.instance;
   Stream<QuerySnapshot> informationExercice = FirebaseFirestore.instance.collection('Exercices').snapshots();
   bool flag = false;
+  final user = FirebaseAuth.instance.currentUser!;
 
   @override
   Widget build(BuildContext context) {
@@ -36,16 +38,15 @@ class ExerciceFirebase extends StatelessWidget {
                       Map<String, dynamic> data =
                       document.data()! as Map<String, dynamic>;
                       print(state.valSearching);
-                      if(state.type != null){
-                        print(state.type);
-                        return CaseWidgetExercice(nom: data['nom'],nomMuscle: data['nomMuscle'],);
+                      if(data['idUser'] == user.uid){
+                        if(state.type != null){
+                          return CaseWidgetExercice(nom: data['nom'],nomMuscle: data['nomMuscle'],);
+                        }
+                        else if(state.valSearching != null && data['nom'].toString().toLowerCase().startsWith(state.valSearching!.toLowerCase())){
+                          return CaseWidgetExercice(nom: data['nom'],nomMuscle: data['nomMuscle'],);
+                        }
                       }
-                      else if(state.valSearching != null && data['nom'].toString().toLowerCase().startsWith(state.valSearching!.toLowerCase())){
-                        return CaseWidgetExercice(nom: data['nom'],nomMuscle: data['nomMuscle'],);
-                      }
-                      else{
-                        return Container();
-                      }
+                      return Container();
 
                     }).toList(),
                   );
@@ -68,7 +69,10 @@ class ExerciceFirebase extends StatelessWidget {
                     snapshot.data!.docs.map((DocumentSnapshot document) {
                       Map<String, dynamic> data =
                       document.data()! as Map<String, dynamic>;
-                      return CaseWidgetExercice(nom: data['nom'],nomMuscle: data['nomMuscle'],);
+                      if(data['idUser'] == user.uid){
+                        return CaseWidgetExercice(nom: data['nom'],nomMuscle: data['nomMuscle'],);
+                      }
+                      return Container();
                     }).toList(),
                   );
                 });
