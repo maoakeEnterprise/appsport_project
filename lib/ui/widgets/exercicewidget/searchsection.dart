@@ -25,7 +25,8 @@ class SearchSectionWidget extends StatelessWidget {
             cursorRadius: const Radius.circular(10),
             decoration: CustomThemes.textFieldStyle,
             onChanged: (val){name=val;},
-          )),
+          )
+          ),
           InkWell(
             borderRadius: BorderRadius.circular(15),
             onTap: (){

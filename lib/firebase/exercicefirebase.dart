@@ -1,5 +1,4 @@
 import 'package:appsport_project/bloc/exercicebloc/exercice_bloc.dart';
-import 'package:appsport_project/model/muscle.dart';
 import 'package:appsport_project/ui/widgets/exercicewidget/casewidgetexercice.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -23,8 +22,7 @@ class ExerciceFirebase extends StatelessWidget {
             informationExercice = FirebaseFirestore.instance.collection('Exercices').where('type',isEqualTo: state.type).snapshots();
             return StreamBuilder(
                 stream: informationExercice,
-                builder: (BuildContext context,
-                    AsyncSnapshot<QuerySnapshot> snapshot) {
+                builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (snapshot.hasError) {
                     return const Text("ERROR");
                   }
@@ -80,21 +78,5 @@ class ExerciceFirebase extends StatelessWidget {
         },
       ),
     );
-  }
-
-  Future<bool> muscleRecup(String idmuscle,String state) async{
-    final ref = db.collection('Muscles').doc(idmuscle).withConverter(
-      fromFirestore: Muscle.fromFirestore,
-      toFirestore: (Muscle muscle, _) => muscle.toFirestore(),
-    );
-    final docSnap = await ref.get();
-    final muscle = docSnap.data();
-
-    flag = false;
-    if(muscle == null) return false;
-    if(muscle.type == state) flag = true;
-
-    return false;
-
   }
 }

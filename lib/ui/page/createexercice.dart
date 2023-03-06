@@ -1,5 +1,7 @@
+import 'package:appsport_project/bloc/createexercicebloc/createexercice_bloc.dart';
 import 'package:appsport_project/ui/widgets/createexercicewidget/gridviewexercice.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../themes/themes.dart';
 import '../widgets/createexercicewidget/textfieldnameexercice.dart';
@@ -18,8 +20,10 @@ class CreateExercice extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           const TextFiledNameExercice(),
-          const GridViewExercice(),
-          InkWell(
+          GridViewExercice(),
+          BlocBuilder<CreateExerciceBloc, CreateExerciceState>(
+  builder: (context, state) {
+    return InkWell(
               borderRadius: BorderRadius.circular(50),
             child: Container(
               padding: const EdgeInsets.all(10),
@@ -31,8 +35,15 @@ class CreateExercice extends StatelessWidget {
               ),
               child: Text("Valider",style: CustomThemes.widgetName,textAlign: TextAlign.center,)
             ),
-            onTap: (){},
-          )
+            onTap: (){
+                if(state.nameMuscle != null && state.nameExercice!= null){
+                  print(state.nameExercice);
+                  print(state.nameMuscle);
+                }
+            },
+          );
+  },
+)
         ],
       ),
     );
